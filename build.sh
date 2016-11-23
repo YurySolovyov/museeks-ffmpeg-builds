@@ -1,5 +1,4 @@
 shopt -s extglob
-make clean
 
 BUILD_ROOT=$(pwd)
 CONFIGURE_ROOT=$(pwd)/src/configure
@@ -54,7 +53,7 @@ function build_for_platform() {
 
   make -j8
 
-  ./ffmpeg -v 0 -formats || ./ffmpeg.exe -v 0 -formats
+  $BUILD_ROOT/$dir/ffmpeg -v 0 -formats || $BUILD_ROOT/$dir/ffmpeg.exe -v 0 -formats
   rm -rf !(ffmpeg|ffmpeg.exe)
   ls -lh ffmpeg*
   cd $BUILD_ROOT
